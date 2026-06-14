@@ -1,0 +1,6 @@
+httpx==0.27.2
+beautifulsoup4==4.12.3
+python-dotenv==1.0.1
+aiogram==3.28.2
+psycopg[binary]==3.2.13
+aiohttp==3.13.5

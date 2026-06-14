@@ -1,0 +1,35 @@
+# Render Blueprint: бесплатный web-сервис (бот + health-сервер) и бесплатная
+# PostgreSQL-база. DATABASE_URL подставляется автоматически из базы, секреты
+# (токен, ключ, chat_id) задаются в дашборде (sync: false).
+databases:
+  - name: freelance-ai-parser-db
+    plan: free
+
+services:
+  - type: web
+    name: freelance-ai-parser
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      # PostgreSQL: внутренний URL подставится из базы выше.
+      - key: DATABASE_URL
+        fromDatabase:
+          name: freelance-ai-parser-db
+          property: connectionString
+      # Секреты — задать значения в дашборде Render.
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      # Несекретные настройки.
+      - key: DEEPSEEK_BASE_URL
+        value: https://api.deepseek.com
+      - key: DEEPSEEK_MODEL
+        value: deepseek-chat
