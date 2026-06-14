@@ -33,3 +33,13 @@ services:
         value: https://api.deepseek.com
       - key: DEEPSEEK_MODEL
         value: deepseek-chat
+      - key: LOCAL_INCLUDE_FILTER_ENABLED
+        value: true
+      - key: LOCAL_EXCLUDE_FILTER_ENABLED
+        value: true
+      - key: LOCAL_BUDGET_FILTER_ENABLED
+        value: false
+      - key: PAGES_TO_PARSE
+        value: 5
+      - key: KWORK_PAGES_TO_PARSE
+        value: 5
