@@ -25,7 +25,7 @@ class Config:
     telegram_chat_id: str = os.getenv("TELEGRAM_CHAT_ID", "")
 
     # Поведение
-    pages_to_parse: int = int(os.getenv("PAGES_TO_PARSE", "5"))
+    pages_to_parse: int = int(os.getenv("PAGES_TO_PARSE", "2"))
     max_age_hours: int = int(os.getenv("MAX_AGE_HOURS", "168"))
     request_delay: float = float(os.getenv("REQUEST_DELAY", "1.5"))
 
